@@ -24,8 +24,7 @@ function($) {
             },
             load_video: function(in_video_id) {
                 if (player) {
-                    var current_state = player.getPlayerState();
-                    if (current_state !== 5) {
+                    if (player.getPlayerState() !== 5) {
                         player.loadVideoById(in_video_id);
                     }
                     player.playVideo();

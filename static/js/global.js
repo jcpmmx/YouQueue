@@ -174,9 +174,15 @@ function($, _, Backbone, Handlebars, VP) {
                 this.$el.find('i').hide();
             },
             move_to_queue: function(e) {
-                this.model.set('order', queueVideos.next_order());
+                var $video_in_queue = $('#' + this.model.get_ytid());
+                if ($video_in_queue.length > 0) {
+                    $video_in_queue.fadeTo('normal', 0.3).fadeTo('normal', 1.0);
+                }
+                else {
+                    this.model.set('order', queueVideos.next_order());
+                    queueVideos.add(this.model);
+                }
                 searchResultsVideos.remove(this.model);
-                queueVideos.add(this.model);
                 if (searchResultsVideos.length === 0) {
                     searchResultsVideos.trigger('need_more_videos');
                 }
