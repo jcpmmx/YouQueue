@@ -1,0 +1,131 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <title>YouQueue</title>
+        <meta charset="utf-8">
+        <meta name="description" content="YouQueue helps you build on-the-fly queues from YouTube videos.">
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="expires" content="-1">
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'css/libs/normalize.min.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/libs/bootstrap-responsive.min.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/libs/bootstrap.min.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/libs/fa/css/font-awesome.min.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/libs/animate.min.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}" type="text/css" media="all">
+        {% block extra_styles %}{% endblock extra_styles %}
+        <script src="{% static 'js/libs/modernizr-2.6.2-respond-1.1.0.min.js' %}"></script>
+    </head>
+    <body>
+        <div id="div_main" class="container-fluid">
+            <div class="row-fluid">
+                <header>
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <div class="container">
+                                <a class="brand" href="{% url 'index' %}"><i class="icon-play"></i> YouQueue &nbsp; <small>BETA</small></a>
+                                <ul class="nav pull-right">
+                                    <p class="navbar-text pull-right">Search videos, create a queue and enjoy!</p>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div id="div_content">
+                    <div class="row-fluid">
+                        <div id="div_search" class="span3">
+                            <div id="div_search_input" class="clearfix">
+                                <div id="div_search_widgets" class="pull-left clearfix">
+                                    <div class="pull-left"><i class="icon-search"></i></div>
+                                    <div class="pull-right">
+                                        <input id="input_search" type="text" placeholder="Search YouTube">
+                                    </div>
+                                </div>
+                                <div id="div_search_loading" class="pull-right hide"><i class="icon-spinner"></i></div>
+                            </div>
+                            <ul id="ul_search_results" class="ul_video_list unstyled"></ul>
+                        </div>
+                        <div id="div_video" class="span6">
+                            <div id="div_video_container">
+                                <div id="player"></div>
+                            </div>
+                            <br>
+                            <div id="div_player_controls" class="text-center hide">
+                                <div class="btn-toolbar">
+                                    <div class="btn-group">
+                                        <button id="btn_previous" class="btn btn-inverse"><i class="icon-backward"></i></button>
+                                        <button id="btn_play_pause" class="btn btn-inverse"><i class="icon-play"></i></button>
+                                        <button id="btn_next" class="btn btn-inverse"><i class="icon-forward"></i></button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button id="btn_mute" class="btn btn-inverse"><i class="icon-volume-off"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div_queue" class="span3">
+                            <ul id="ul_queue" class="ul_video_list unstyled sortable hide"></ul>
+                            <p id="p_empty_queue">Your queue is empty.</p>
+                        </div>
+                    </div>
+                    {% verbatim %}
+                        <script id="template_search_result_video" type="text/template">
+                            <div class="clearfix">
+                                <div class="pull-left clearfix div_video_info">
+                                    <div class="pull-left"><img src="{{ thumbnail }}"></div>
+                                    <div class="pull-right">
+                                        <p>{{ truncate 30 title }}</p>
+                                        <p class="muted"><small>{{ truncate 50 description }}</small></p>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><i class="icon-plus hide"></i></div>
+                            </div>
+                        </script>
+                        <script id="template_queue_video" type="text/template">
+                            <div class="clearfix">
+                                <div class="pull-left">
+                                    {{#if selected }}
+                                        {{#if playing_now }}<i class="icon-play-sign"></i>{{else}}{{ order }}.{{/if}}
+                                    {{else}}
+                                        {{ order }}.
+                                    {{/if}} &nbsp; {{ truncate 30 title }}
+                                </div>
+                                <div class="pull-right"><span class="span_delete" title="Delete form your queue"><i class="icon-remove"></i></span></div>
+                            </div>
+                        </script>
+                    {% endverbatim %}
+                </div>
+                <footer class="clearfix">
+                    <div class="pull-left">
+                        We do <strong>not</strong> store any kind of information about you or the videos you are watching.
+                    </div>
+                    <div class="pull-right">
+                        &nbsp;&nbsp;&nbsp;
+                        By <a href="http://co.linkedin.com/in/jcpmmx/" target="_blank">Juli&aacute;n P&eacute;rez</a>
+                        &nbsp;&middot;&nbsp;
+                        <a href="mailto:jcpmmx@gmail.com?subject=I love your work in YouQueue!" target="_blank">Get in touch</a>
+                        &nbsp;&middot;&nbsp;
+                        &copy;2013
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script type="text/javascript" src="{% static 'js/config.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/libs/require.min.js' %}" data-main="{% static 'js/global.js' %}"></script>
+        <script type="text/javascript">
+            function onYouTubeIframeAPIReady() {}
+        </script>
+    </body>
+</html>
