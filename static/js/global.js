@@ -347,9 +347,7 @@ function($, _, Backbone, Handlebars, VP) {
         }).disableSelection();
         var search_in_youtube = function(in_query) {
             searchResultsVideos.remove(searchResultsVideos.models);
-            if (in_query.length >= 3) {
-                searchResultsVideos.search_videos(in_query);
-            }
+            searchResultsVideos.search_videos(in_query);
         };
         $('#input_search').typing({
             stop: function (e, $el) {
