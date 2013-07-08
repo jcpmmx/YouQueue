@@ -2,7 +2,7 @@ body {
     background: #000;
 }
 header .navbar {
-    margin: 0 0 1em;
+    margin: 0 0 3em;
 }
 header .navbar .navbar-inner {
     padding: 0 0 4px;
@@ -28,6 +28,9 @@ footer div {
     padding: 1em 0;
     border-top: 1px dotted #333;
 }
+footer p {
+    margin: 0;
+}
 footer a {
     color: #999;
 }
@@ -38,7 +41,7 @@ footer a:hover {
 
 
 .div_list_title {
-    margin-top: 1em;
+    margin-top: 3em;
     padding: 10px 1em 1em;
     border-bottom: 1px solid #777;
 }
@@ -118,14 +121,16 @@ footer a:hover {
     height: 100%;
 }
 #ul_search_results li .div_video_info .pull-left {
-    width: 35%;
+    width: 37%;
 }
 #ul_search_results li .div_video_info .pull-right {
-    width: 65%;
+    width: 63%;
 }
 #ul_search_results li p {
     padding: 0;
     margin: 0;
+    text-overflow: clip;
+    overflow: hidden;
 }
 #ul_search_results li p.muted {
     line-height: 1em;
