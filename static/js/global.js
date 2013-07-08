@@ -197,7 +197,6 @@ function($, _, Backbone, Handlebars, VP) {
             },
             initialize: function() {
                 this.listenTo(this.model, 'change', this.render);
-                this.listenTo(this.model, 'destroy', this.remove);
             },
             render: function() {
                 this.$el.html(this.template(this.model.toJSON()));
@@ -219,7 +218,7 @@ function($, _, Backbone, Handlebars, VP) {
             },
             delete_from_queue: function(e) {
                 e.stopPropagation();
-                this.model.destroy();
+                queueVideos.remove(this.model);
                 queueVideos.increase_previous_size();
                 queueVideos.trigger('reorder_videos');
             }
