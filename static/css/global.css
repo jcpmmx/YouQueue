@@ -1,15 +1,11 @@
-body
-{
+body {
     background: #000;
 }
-header .navbar
-{
-    margin: 0;
-    border-bottom: 1px solid #333;
+header .navbar {
+    margin: 0 0 1em;
 }
-header .navbar .navbar-inner
-{
-    padding: 1em;
+header .navbar .navbar-inner {
+    padding: 0 0 4px;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -23,31 +19,32 @@ header .navbar .brand:hover {
     color: #fff;
     text-shadow: 3px 0px 3px #555;
 }
-footer
-{
-    padding: 1em 0;
+footer {
     color: #777;
-    border-top: 1px solid #333;
-    text-align: center;
     font-size: 0.9em;
     font-weight: 200;
 }
-footer a
-{
+footer div {
+    padding: 1em 0;
+    border-top: 1px dotted #333;
+}
+footer a {
     color: #999;
 }
-footer a:hover
-{
+footer a:hover {
     color: #fff;
     text-decoration: none;
 }
 
 
+.div_list_title {
+    margin-top: 1em;
+    padding: 10px 1em 1em;
+    border-bottom: 1px solid #777;
+}
 .ul_video_list li {
     padding: 1em;
-    border: 1px solid #333;
-    border-left: none;
-    border-right: none;
+    border-bottom: 1px solid #333;
 }
 .ul_video_list li:hover {
     background: #333;
@@ -72,11 +69,11 @@ footer a:hover
     padding: 3em 0;
     color: #fff;
 }
-#div_search_input {
-    padding: 1em;
-    border: 1px solid #777;
-    border-left: none;
-    border-right: none;
+#div_search {
+    padding-right: 2em;
+}
+#div_queue {
+    padding-left: 2em;
 }
 #div_search_input #div_search_widgets,
 #div_search_input #div_search_widgets .pull-right{
@@ -109,6 +106,7 @@ footer a:hover
     padding-top: 30px;
     overflow: hidden;
     background: url('../img/video_off.gif') repeat;
+    border: 1px solid #333;
 }
 #div_video_container iframe,
 #div_video_container object,
@@ -129,6 +127,9 @@ footer a:hover
     padding: 0;
     margin: 0;
 }
+#ul_search_results li p.muted {
+    line-height: 1em;
+}
 #ul_search_results li img {
     width: 70px;
 }
@@ -143,8 +144,10 @@ footer a:hover
     color: #fff;
     cursor: pointer;
 }
-#p_empty_queue {
-    padding-top: 1em;
+#p_queue_status {
+    height: 22px;
+    padding: 0;
+    margin: 0 0.5em;
 }
 #div_search_loading {
     -webkit-animation: rotateIn 1s infinite;

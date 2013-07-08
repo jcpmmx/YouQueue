@@ -31,26 +31,14 @@
     <body>
         <div id="div_main" class="container-fluid">
             <div class="row-fluid">
-                <header>
-                    <div class="navbar navbar-inverse">
-                        <div class="navbar-inner">
-                            <div class="container">
-                                <a class="brand" href="{% url 'index' %}"><i class="icon-play"></i> YouQueue &nbsp; <small>BETA</small></a>
-                                <ul class="nav pull-right">
-                                    <p class="navbar-text pull-right">Search videos, create a queue and enjoy!</p>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </header>
                 <div id="div_content">
                     <div class="row-fluid">
                         <div id="div_search" class="span3">
-                            <div id="div_search_input" class="clearfix">
+                            <div id="div_search_input" class="div_list_title clearfix">
                                 <div id="div_search_widgets" class="pull-left clearfix">
                                     <div class="pull-left"><i class="icon-search"></i></div>
                                     <div class="pull-right">
-                                        <input id="input_search" type="text" placeholder="Search YouTube">
+                                        <input id="input_search" type="text" placeholder="Search in YouTube">
                                     </div>
                                 </div>
                                 <div id="div_search_loading" class="pull-right hide"><i class="icon-spinner"></i></div>
@@ -58,6 +46,18 @@
                             <ul id="ul_search_results" class="ul_video_list unstyled"></ul>
                         </div>
                         <div id="div_video" class="span6">
+                            <header>
+                                <div class="navbar navbar-inverse">
+                                    <div class="navbar-inner">
+                                        <div class="container">
+                                            <a class="brand" href="{% url 'index' %}"><i class="icon-play"></i> YouQueue &nbsp; <small>BETA</small></a>
+                                            <ul class="nav pull-right">
+                                                <p class="navbar-text pull-right">Search videos. Manage you queue. Enjoy.</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
                             <div id="div_video_container">
                                 <div id="player"></div>
                             </div>
@@ -76,8 +76,10 @@
                             </div>
                         </div>
                         <div id="div_queue" class="span3">
+                            <div class="div_list_title clearfix">
+                                <p id="p_queue_status">Your queue is empty.</p>
+                            </div>
                             <ul id="ul_queue" class="ul_video_list unstyled sortable hide"></ul>
-                            <p id="p_empty_queue">Your queue is empty.</p>
                         </div>
                     </div>
                     {% verbatim %}
@@ -107,19 +109,19 @@
                         </script>
                     {% endverbatim %}
                 </div>
-                <footer class="clearfix">
-                    <div class="pull-left">
-                        We do <strong>not</strong> store any kind of information about you or the videos you are watching.
-                    </div>
-                    <div class="pull-right">
-                        &nbsp;&nbsp;&nbsp;
-                        By <a href="http://co.linkedin.com/in/jcpmmx/" target="_blank">Juli&aacute;n P&eacute;rez</a>
-                        &nbsp;&middot;&nbsp;
-                        <a href="mailto:jcpmmx@gmail.com?subject=I love your work in YouQueue!" target="_blank">Get in touch</a>
-                        &nbsp;&middot;&nbsp;
-                        <a href="http://github.com/jcpmmx/youqueue" target="_blank">See it in GitHub</a>
-                        &nbsp;&middot;&nbsp;
-                        &copy;2013
+                <footer class="row-fluid">
+                    <div class="span6 offset3 text-center">
+                        <p>We do <strong>not</strong> store any kind of information about you or the videos you are watching.</p>
+                        <p>
+                            &nbsp;&nbsp;&nbsp;
+                            By <a href="http://co.linkedin.com/in/jcpmmx/" target="_blank">Juli&aacute;n P&eacute;rez</a>
+                            &nbsp;&middot;&nbsp;
+                            <a href="mailto:jcpmmx@gmail.com?subject=I love your work in YouQueue!" target="_blank">Get in touch</a>
+                            &nbsp;&middot;&nbsp;
+                            <a href="http://github.com/jcpmmx/youqueue" target="_blank">See it in GitHub</a>
+                            &nbsp;&middot;&nbsp;
+                            &copy;2013
+                        </p>
                     </div>
                 </footer>
             </div>

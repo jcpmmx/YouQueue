@@ -247,22 +247,24 @@ function($, _, Backbone, Handlebars, VP) {
             },
             check_queue_size: function() {
                 if (queueVideos.length === 0) {
-                    $('#p_empty_queue').show();
-                    $('#ul_queue').hide();
                     playerControlsView.hide_controls();
+                    $('#p_queue_status').text('Your queue is empty.');
+                    $('#ul_queue').hide();
                 }
                 else {
-                    $('#p_empty_queue').hide();
-                    $('#ul_queue').show();
+                    var queue_status = queueVideos.length + ' videos in your queue.';
                     playerControlsView.show_controls();
                     if (queueVideos.length === 1) {
                         var first_video = queueVideos.at(0);
+                        queue_status = '1 video in your queue.';
                         if (queueVideos.previous_size === 0) {
                             VP.cue_video(first_video.get_ytid(), function(e) {
                                 playerControlsView.trigger('player_changed', { current_video: e.target.getVideoData().video_id, new_state: e.data });
                             });
                         }
                     }
+                    $('#p_queue_status').text(queue_status);
+                    $('#ul_queue').show();
                 }
             },
             play_video: function(e) {
