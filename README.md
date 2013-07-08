@@ -7,6 +7,7 @@ http://youqueue.herokuapp.com
 Stack includes:
 - Python
 - Django
+- Google APIs Python client
 - RequireJS
 - jQuery
 - jQuery UI
