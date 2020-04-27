@@ -24,7 +24,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
-SECRET_KEY = 'dsw*n0*9w6y-$bl*w3bhqcar=3y_flzk0r(7c&amp;it6o&amp;4tpjt62'
+SECRET_KEY = '<EDITED>'
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
@@ -119,7 +119,7 @@ LOGGING = {
 # -----------------------------------------------------------------------------
 
 
-GOOGLE_API_KEY = 'AIzaSyAIA_fRJr_zis2Rs_LDQJOLpyoD-I1ON2s'
+GOOGLE_API_KEY = '<EDITED>'
 
 
 # -----------------------------------------------------------------------------
